@@ -44,15 +44,17 @@ int main() {
         bool hasSquareBrackets = false;
 
 
-        for (char c : line) {
-             if (c == '(' || c == ')') {
-                hasRoundBrackets = true;
-             }
-            if (c == '[' || c == ']') {
-                hasSquareBrackets = true;
-            }
-        }
-
+         size_t found1 = line.find('(');
+         size_t found2 = line.find(')');
+         if (found1 != string::npos && found2 != string::npos && found1 < found2) {
+             hasRoundBrackets = true;
+         }
+        
+         size_t found_1 = line.find('[');
+         size_t found_2 = line.find(']');
+         if (found_1 != string::npos && found_2 != string::npos && found_1 < found_2) {
+         hasSquareBrackets = true;
+         }
 
         if (hasRoundBrackets) {
             outputRoundBrackets << line << endl;
